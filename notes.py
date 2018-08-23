@@ -38,6 +38,7 @@ def add():
         db.write('\n')
 
 def db_list():
+    print('Parsing db records...')
     home_folder = os.path.expanduser("~")
     directory = home_folder + '/.config/pynotes/'
     with open(directory + 'pynotes_db','r') as db:
