@@ -46,14 +46,22 @@ class Pynotes:
         with open(directory + "db.dat", "wb") as t:
             pickle.dump(self.notes, t)
 
-    def remove_note(self, note_id):
-        self.notes.remove(self.notes[note_id])
-        print('Note successfully removed')
+    def _remove(self, note_id, task_id=None):
+        if task_id is None:
+            self.notes.remove(self.notes[note_id])
+            print('Note successfully removed')
+        else:
+            self.notes[note_id].remove_task(task_id)
+            print('Task successfully removed')
         self.save_data()
 
     def edit(self, note_id, task_id=None):
         if task_id is not None:
             self.notes[note_id].edit_task(task_id)
+        if note_id is not None and task_id is None:
+            print('Current name: ' + self.notes[note_id].name)
+            new_name = input('New name of the Task: ')
+            self.notes[note_id].name = new_name
         self.save_data()
 
     def add_note(self):
@@ -122,6 +130,11 @@ class Pynotes:
 
         for glued_note in note_tuples:
             for row in glued_note:
+                if len(row) > int(cols):
+                    print('Not enough space to fit notes on screen')
+                    sys.exit(1)
+        for glued_note in note_tuples:
+            for row in glued_note:
                 print(row)
             print()
 
@@ -138,6 +151,8 @@ class Note:
         self.tasks.append(task)
     def check_task(self, task_id):
         self.tasks[task_id][1] = not self.tasks[task_id][1]
+    def remove_task(self, task_id):
+        del self.tasks[task_id]
     def edit_task(self, task_id):
         self.tasks[task_id][0]
         print('Current text is:')
@@ -162,7 +177,7 @@ class Note:
 
     def tree_print(self, status_bool=False):
         for i,task in enumerate(self.tasks):
-            leaf = task[0]
+            leaf = str(i) + ' - ' + task[0]
             status = ' '
             if status_bool and task[1]:
                 status = '*'
@@ -194,6 +209,8 @@ class Note:
         str_repr.append('+' + '=' * (max_width + 2) + '+')
         str_repr.append('|' + ' #' + str(i) + ' ' * (max_width - len(str(i))) + '|')
         str_repr.append('|' + ' ' + self.name + ' ' * (max_width - len(self.name)) + ' ' + '|')
+        str_repr.append('+' + '-' * (max_width + 2) + '+')
+        str_repr.append('|' + ' ' + self.timestamp + ' ' * (max_width - len(self.timestamp)  + 1) + '|')
         str_repr.append('+' + '=' * (max_width + 2) + '+')
         for i, task in enumerate(self.tasks):
             mark = ' '
@@ -226,10 +243,7 @@ if __name__ == "__main__":
     elif args.c == 'edit':
         command = 'edit'
     elif args.c == 'remove':
-        if args.n is None:
-            print('You must specify note number with -n')
-            sys.exit(1)
-        command = 'remove_note'
+        command = 'remove'
     elif args.c == 'check':
         if args.n is None or args.t is None:
             print('You must specify note number with -n ... and task number with -t')
@@ -243,18 +257,27 @@ if __name__ == "__main__":
         os.system('cls' if os.name == 'nt' else 'clear')
     instance = Pynotes()
     if command == 'add':
+        # TODO separate to note edit and task edit
         instance.add_note()
     elif command == 'print':
         if args.n is None:
             instance.print_notes(args.n)
         else:
             instance.print_notes(int(args.n))
-    elif command == 'edit':
-        if args.n is None or args.t is None:
+    elif command == 'remove':
+        if args.n is None and args.t is None:
             print('You have to specify -n (possible with -t to edit task)')
-            os.exit(1)
+            sys.exit(1)
         if args.t is None:
-            pass #TODO
+            instance._remove(int(args.n))
+        else:
+            instance._remove(int(args.n), int(args.t))
+    elif command == 'edit':
+        if args.n is None and args.t is None:
+            print('You have to specify -n (possible with -t to edit task)')
+            sys.exit(1)
+        if args.t is None:
+            instance.edit(int(args.n))
         else:
             instance.edit(int(args.n), int(args.t))
     elif command == 'tree':
@@ -266,7 +289,5 @@ if __name__ == "__main__":
         instance.list_notes()
     elif command == 'check':
         instance.check_task(int(args.n), int(args.t))
-    elif command == 'remove_note':
-        instance.remove_note(int(args.n))
 
     sys.exit(0)
