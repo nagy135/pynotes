@@ -9,14 +9,16 @@ Pynotes	notes.py	/^class Pynotes:$/;"	c
 __init__	notes.py	/^    def __init__(self):$/;"	m	class:Note
 __init__	notes.py	/^    def __init__(self):$/;"	m	class:Pynotes
 _remove	notes.py	/^    def _remove(self, note_id, task_id=None):$/;"	m	class:Pynotes
+add	notes.py	/^    def add(self, note_id=None):$/;"	m	class:Pynotes
 add_note	notes.py	/^    def add_note(self):$/;"	m	class:Pynotes
-add_task	notes.py	/^    def add_task(self, task_name, done=False ):$/;"	m	class:Note
+add_task	notes.py	/^    def add_task(self):$/;"	m	class:Note
 argparse	notes.py	/^import argparse$/;"	i
 args	notes.py	/^    args = parser.parse_args()$/;"	v	class:Note
 basic_print	notes.py	/^    def basic_print(self, i, tasks=True):$/;"	m	class:Note
 check_task	notes.py	/^    def check_task(self, note_id, task_id):$/;"	m	class:Pynotes
 check_task	notes.py	/^    def check_task(self, task_id):$/;"	m	class:Note
 create_db	notes.py	/^    def create_db(self):$/;"	m	class:Pynotes
+desc	notes.py	/^    def desc(self, note_id):$/;"	m	class:Pynotes
 edit	notes.py	/^    def edit(self, note_id, task_id=None):$/;"	m	class:Pynotes
 edit_task	notes.py	/^    def edit_task(self, task_id):$/;"	m	class:Note
 getpass	notes.py	/^import getpass$/;"	i
@@ -34,5 +36,5 @@ str_repr	notes.py	/^    def str_repr(self, i):$/;"	m	class:Note
 subprocess	notes.py	/^import subprocess$/;"	i
 sys	notes.py	/^import sys$/;"	i
 time	notes.py	/^import time$/;"	i
-tree	notes.py	/^    def tree(self, status=False):$/;"	m	class:Pynotes
+tree	notes.py	/^    def tree(self, note_id=None, status=False):$/;"	m	class:Pynotes
 tree_print	notes.py	/^    def tree_print(self, status_bool=False):$/;"	m	class:Note
