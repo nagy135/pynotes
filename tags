@@ -4,3 +4,46 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+Note	notes.py	/^class Note:$/;"	c
+Pynotes	notes.py	/^class Pynotes:$/;"	c
+__init__	notes.py	/^    def __init__(self):$/;"	m	class:Note
+__init__	notes.py	/^    def __init__(self):$/;"	m	class:Pynotes
+add_note	notes.py	/^    def add_note(self):$/;"	m	class:Pynotes
+add_task	notes.py	/^    def add_task(self, task_name, done=False ):$/;"	m	class:Note
+argparse	notes.py	/^import argparse$/;"	i
+argparse	notes_v1.py	/^import argparse$/;"	i
+args	notes.py	/^    args = parser.parse_args()$/;"	v	class:Note
+args	notes_v1.py	/^    args = parser.parse_args()$/;"	v
+basic_print	notes.py	/^    def basic_print(self, i, tasks=True):$/;"	m	class:Note
+check_task	notes.py	/^    def check_task(self, note_id, task_id):$/;"	m	class:Pynotes
+check_task	notes.py	/^    def check_task(self, task_id):$/;"	m	class:Note
+create_db	notes.py	/^    def create_db(self):$/;"	m	class:Pynotes
+data_notes	notes_v1.py	/^        data_notes = db_list(args.id)$/;"	v
+db_add	notes_v1.py	/^def db_add():$/;"	f
+db_list	notes_v1.py	/^def db_list(note_id=None):$/;"	f
+db_remove	notes_v1.py	/^def db_remove(note_id):$/;"	f
+getpass	notes.py	/^import getpass$/;"	i
+getpass	notes_v1.py	/^import getpass$/;"	i
+initialize	notes_v1.py	/^def initialize():$/;"	f
+instance	notes.py	/^    instance = Pynotes()$/;"	v	class:Note
+list_notes	notes.py	/^    def list_notes(self):$/;"	m	class:Pynotes
+load_data	notes.py	/^    def load_data(self):$/;"	m	class:Pynotes
+os	notes.py	/^import os$/;"	i
+os	notes_v1.py	/^import os$/;"	i
+parser	notes.py	/^    parser = argparse.ArgumentParser()$/;"	v	class:Note
+parser	notes_v1.py	/^    parser = argparse.ArgumentParser()$/;"	v
+pickle	notes.py	/^import pickle$/;"	i
+print_db_list	notes_v1.py	/^def print_db_list(data):$/;"	f
+print_notes	notes.py	/^    def print_notes(self, i=None):$/;"	m	class:Pynotes
+proc	notes_v1.py	/^    proc = subprocess.Popen(["stty", "size"], stdout=subprocess.PIPE)$/;"	v
+remove_note	notes.py	/^    def remove_note(self, note_id):$/;"	m	class:Pynotes
+save_data	notes.py	/^    def save_data(self):$/;"	m	class:Pynotes
+set_name	notes.py	/^    def set_name(self, name):$/;"	m	class:Note
+str_repr	notes.py	/^    def str_repr(self, i):$/;"	m	class:Note
+subprocess	notes.py	/^import subprocess$/;"	i
+subprocess	notes_v1.py	/^import subprocess$/;"	i
+sys	notes.py	/^import sys$/;"	i
+time	notes.py	/^import time$/;"	i
+time	notes_v1.py	/^import time$/;"	i
+tree	notes.py	/^    def tree(self):$/;"	m	class:Pynotes
+tree_print	notes.py	/^    def tree_print(self):$/;"	m	class:Note
