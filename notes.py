@@ -7,7 +7,7 @@ from bin.pynotes import Pynotes
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", help="command to run", choices=['add', 'print', 'list', 'remove', 'check', 'tree', 'edit', 'desc'])
+    parser.add_argument("c", help="command to run", choices=['add', 'print', 'list', 'remove', 'check', 'tree', 'edit', 'desc'])
     parser.add_argument("-n", help="specify note to select")
     parser.add_argument("-s", help="show status of notes", action="store_true")
     parser.add_argument("-r", help="repaint, clear terminal", action="store_true")
