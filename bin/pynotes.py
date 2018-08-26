@@ -120,10 +120,10 @@ class Pynotes:
             str_note = note.str_repr(i)
             note_size = len(str_note[0])
             if leftover_space < note_size + 2 or len(note_tuples) == 0:
-                leftover_space = int(cols) - note_size
+                leftover_space = int(cols) - (note_size + 2)
                 note_tuples.append(str_note)
             else:
-                leftover_space -= 2 + note_size
+                leftover_space -= (2 + note_size)
                 size_diff = len(str_note) - len(note_tuples[-1])
                 if size_diff > 0:
                     for i in range(size_diff):
@@ -136,10 +136,9 @@ class Pynotes:
                     note_tuples[-1][i] += '  ' + ' ' * note_size
 
         for glued_note in note_tuples:
-            for row in glued_note:
-                if len(row) > int(cols):
-                    print('Not enough space to fit notes on screen')
-                    sys.exit(1)
+            if len(glued_note[0]) > int(cols):
+                print('Not enough space to fit notes on screen')
+                sys.exit(1)
         for glued_note in note_tuples:
             for row in glued_note:
                 print(row)
