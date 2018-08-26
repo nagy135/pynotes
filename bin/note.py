@@ -2,6 +2,16 @@ import os
 import time
 import sys
 
+colors = {
+            'red' : "\033[31m",
+            'green' : "\033[32m",
+            'yellow' : "\033[33m",
+            'light_yellow' : "\033[35m",
+            'blue' : "\033[34m",
+            'cyan' : "\033[34m",
+            'end' : "\033[00m"
+        }
+
 class Note:
 
     def __init__(self):
@@ -94,14 +104,14 @@ class Note:
 
         str_repr = list()
         str_repr.append('+' + '=' * (max_width + 2) + '+')
-        str_repr.append('|' + ' #' + str(i) + ' ' * (max_width - len(str(i))) + '|')
+        str_repr.append('|' + colors['red'] + ' #' + str(i) + colors['end'] + ' ' * (max_width - len(str(i))) + '|')
         right_padding = (max_width - len(self.name)) // 2
         left_padding = (max_width - len(self.name)) - right_padding
         if right_padding < left_padding:
             right_padding, left_padding = left_padding, right_padding
-        str_repr.append('|' + ' ' + ' ' * left_padding + self.name + ' ' * right_padding + ' ' + '|')
+        str_repr.append('|' + ' ' + ' ' * left_padding + colors['yellow'] + self.name + colors['end'] + ' ' * right_padding + ' ' + '|')
         str_repr.append('+' + '-' * (max_width + 2) + '+')
-        str_repr.append('|' + ' ' + self.timestamp + ' ' * (max_width - len(self.timestamp)  + 1) + '|')
+        str_repr.append('|' + ' ' + colors['cyan'] + self.timestamp + colors['end'] + ' ' * (max_width - len(self.timestamp)  + 1) + '|')
         str_repr.append('+' + '=' * (max_width + 2) + '+')
 
         if len(self.desc.strip()) > 0:
@@ -110,10 +120,15 @@ class Note:
             str_repr.append('+' + '=' * (max_width + 2) + '+')
 
         for i, task in enumerate(self.tasks):
-            mark = ' '
             if task[1]:
                 mark = '*'
-            str_repr.append('+ ' + str(i) + ' ' + task[0] + ' ' * (max_width - len(task[0]) - 2 - len(str(i))) + mark + ' ' + '+')
+                str_repr.append('+ ' + str(i) + ' ' + task[0] + ' ' * (max_width - len(task[0]) - 2 - len(str(i))) + mark + ' ' + '+')
+                str_repr[-1] = colors['red'] + str_repr[-1] + colors['end'];
+            else:
+                mark = ' '
+                str_repr.append('+ ' + str(i) + ' ' + task[0] + ' ' * (max_width - len(task[0]) - 2 - len(str(i))) + mark + ' ' + '+')
+                str_repr[-1] = colors['light_yellow'] + str_repr[-1] + colors['end'];
+
         if len(self.tasks):
             str_repr.append('+' + '=' * (max_width + 2) + '+')
         return str_repr

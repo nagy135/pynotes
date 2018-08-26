@@ -4,37 +4,20 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Note	notes.py	/^class Note:$/;"	c
-Pynotes	notes.py	/^class Pynotes:$/;"	c
-__init__	notes.py	/^    def __init__(self):$/;"	m	class:Note
-__init__	notes.py	/^    def __init__(self):$/;"	m	class:Pynotes
-_remove	notes.py	/^    def _remove(self, note_id, task_id=None):$/;"	m	class:Pynotes
-add	notes.py	/^    def add(self, note_id=None):$/;"	m	class:Pynotes
-add_note	notes.py	/^    def add_note(self):$/;"	m	class:Pynotes
-add_task	notes.py	/^    def add_task(self):$/;"	m	class:Note
+Pynotes	notes.py	/^from bin.pynotes import Pynotes$/;"	i
 argparse	notes.py	/^import argparse$/;"	i
-args	notes.py	/^    args = parser.parse_args()$/;"	v	class:Note
-basic_print	notes.py	/^    def basic_print(self, i, tasks=True):$/;"	m	class:Note
-check_task	notes.py	/^    def check_task(self, note_id, task_id):$/;"	m	class:Pynotes
-check_task	notes.py	/^    def check_task(self, task_id):$/;"	m	class:Note
-create_db	notes.py	/^    def create_db(self):$/;"	m	class:Pynotes
-desc	notes.py	/^    def desc(self, note_id):$/;"	m	class:Pynotes
-edit	notes.py	/^    def edit(self, note_id, task_id=None):$/;"	m	class:Pynotes
-edit_task	notes.py	/^    def edit_task(self, task_id):$/;"	m	class:Note
-getpass	notes.py	/^import getpass$/;"	i
-instance	notes.py	/^    instance = Pynotes()$/;"	v	class:Note
-list_notes	notes.py	/^    def list_notes(self):$/;"	m	class:Pynotes
-load_data	notes.py	/^    def load_data(self):$/;"	m	class:Pynotes
+args	notes.py	/^    args = parser.parse_args()$/;"	v
+command	notes.py	/^        command = 'add'$/;"	v
+command	notes.py	/^        command = 'check'$/;"	v
+command	notes.py	/^        command = 'desc'$/;"	v
+command	notes.py	/^        command = 'edit'$/;"	v
+command	notes.py	/^        command = 'list'$/;"	v
+command	notes.py	/^        command = 'print'$/;"	v
+command	notes.py	/^        command = 'remove'$/;"	v
+command	notes.py	/^        command = 'tree'$/;"	v
+instance	notes.py	/^    instance = Pynotes()$/;"	v
+note_id	notes.py	/^            note_id = None$/;"	v
+note_id	notes.py	/^            note_id = int(args.n)$/;"	v
 os	notes.py	/^import os$/;"	i
-parser	notes.py	/^    parser = argparse.ArgumentParser()$/;"	v	class:Note
-pickle	notes.py	/^import pickle$/;"	i
-print_notes	notes.py	/^    def print_notes(self, i=None):$/;"	m	class:Pynotes
-remove_task	notes.py	/^    def remove_task(self, task_id):$/;"	m	class:Note
-save_data	notes.py	/^    def save_data(self):$/;"	m	class:Pynotes
-set_name	notes.py	/^    def set_name(self, name):$/;"	m	class:Note
-str_repr	notes.py	/^    def str_repr(self, i):$/;"	m	class:Note
-subprocess	notes.py	/^import subprocess$/;"	i
+parser	notes.py	/^    parser = argparse.ArgumentParser()$/;"	v
 sys	notes.py	/^import sys$/;"	i
-time	notes.py	/^import time$/;"	i
-tree	notes.py	/^    def tree(self, note_id=None, status=False):$/;"	m	class:Pynotes
-tree_print	notes.py	/^    def tree_print(self, status_bool=False):$/;"	m	class:Note
