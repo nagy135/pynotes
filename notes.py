@@ -95,12 +95,10 @@ if __name__ == "__main__":
             print('Example: pynotes swap -n 1 -t 0,1')
             sys.exit(1)
         else:
-            if args.n is not None:
-                if ',' in args.n:
-                    instance.swap(*args.n.split(','), 'note')
-            if args.t is not None:
+            if args.t is not None and args.n is not None:
                 if ',' in args.t:
-                    instance.swap(*args.t.split(','), 'task')
-
-
+                    instance.swap_tasks(args.n, *args.t.split(','))
+            elif args.n is not None:
+                if ',' in args.n:
+                    instance.swap_notes(*args.n.split(','))
     sys.exit(0)
