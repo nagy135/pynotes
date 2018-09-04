@@ -70,6 +70,11 @@ class Pynotes:
             note.desc = ''.join(t.readlines())
         self.save_data()
 
+    def swap(self, first, second, typeof):
+        if typeof == 'note':
+            self.notes[int(first)], self.notes[int(second)] = self.notes[int(second)], self.notes[int(first)]
+            self.save_data()
+
     def add(self, note_id=None):
         if note_id is None:
             self.add_note()

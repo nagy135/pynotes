@@ -7,7 +7,7 @@ from bin.pynotes import Pynotes
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("c", help="command to run", choices=['add', 'print', 'list', 'remove', 'check', 'tree', 'edit', 'desc'])
+    parser.add_argument("c", help="command to run", choices=['add', 'print', 'list', 'remove', 'check', 'tree', 'edit', 'desc', 'swap'])
     parser.add_argument("-n", help="specify note to select")
     parser.add_argument("-s", help="show status of notes", action="store_true")
     parser.add_argument("-r", help="repaint, clear terminal", action="store_true")
@@ -30,6 +30,8 @@ if __name__ == "__main__":
         command = 'remove'
     elif args.c == 'desc':
         command = 'desc'
+    elif args.c == 'swap':
+        command = 'swap'
     elif args.c == 'check':
         if args.n is None or args.t is None:
             print('You must specify note number with -n ... and task number with -t')
@@ -86,5 +88,19 @@ if __name__ == "__main__":
         instance.list_notes()
     elif command == 'check':
         instance.check_task(int(args.n), int(args.t))
+    elif command == 'swap':
+        if args.n is None and args.t is None:
+            print('You have to specify -n (possible with -t to swap tasks)')
+            print('Example: pynotes swap -n 1,2')
+            print('Example: pynotes swap -n 1 -t 0,1')
+            sys.exit(1)
+        else:
+            if args.n is not None:
+                if ',' in args.n:
+                    instance.swap(*args.n.split(','), 'note')
+            if args.t is not None:
+                if ',' in args.t:
+                    instance.swap(*args.t.split(','), 'task')
+
 
     sys.exit(0)
