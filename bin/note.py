@@ -1,5 +1,5 @@
 import os
-import time
+import datetime
 import sys
 
 colors = {
@@ -16,7 +16,7 @@ class Note:
 
     def __init__(self):
         self.name = ''
-        self.timestamp = time.strftime("%a, %d %b %Y %H:%M:%S", time.gmtime())
+        self.timestamp = datetime.datetime.now().strftime('%a, %d.%m.%Y %H:%M:%S')
         self.tasks = list()
         self.desc = ''
 
