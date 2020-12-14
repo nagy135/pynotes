@@ -123,11 +123,11 @@ class Note:
             if task[1]:
                 mark = '*'
                 str_repr.append('+ ' + str(i) + ' ' + task[0] + ' ' * (max_width - len(task[0]) - 2 - len(str(i))) + mark + ' ' + '+')
-                str_repr[-1] = colors['red'] + str_repr[-1] + colors['end'];
+                str_repr[-1] = colors['green'] + str_repr[-1] + colors['end'];
             else:
                 mark = ' '
                 str_repr.append('+ ' + str(i) + ' ' + task[0] + ' ' * (max_width - len(task[0]) - 2 - len(str(i))) + mark + ' ' + '+')
-                str_repr[-1] = colors['light_yellow'] + str_repr[-1] + colors['end'];
+                str_repr[-1] = colors['red'] + str_repr[-1] + colors['end'];
 
         if len(self.tasks):
             str_repr.append('+' + '=' * (max_width + 2) + '+')
