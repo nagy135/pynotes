@@ -121,11 +121,11 @@ class Note:
 
         for i, task in enumerate(self.tasks):
             if task[1]:
-                mark = '*'
+                mark = '✓'
                 str_repr.append('+ ' + str(i) + ' ' + task[0] + ' ' * (max_width - len(task[0]) - 2 - len(str(i))) + mark + ' ' + '+')
                 str_repr[-1] = colors['green'] + str_repr[-1] + colors['end'];
             else:
-                mark = ' '
+                mark = 'x'
                 str_repr.append('+ ' + str(i) + ' ' + task[0] + ' ' * (max_width - len(task[0]) - 2 - len(str(i))) + mark + ' ' + '+')
                 str_repr[-1] = colors['red'] + str_repr[-1] + colors['end'];
 
